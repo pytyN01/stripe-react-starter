@@ -9,7 +9,7 @@ const store = createStore(root);
 
 ReactDOM.render(
   <Provider store={store}>
-    <Cart stripeToken={process.env.REACT_APP_TOKEN} />
+    <Cart token={"pk_test_GvOaE0WLNjwMhq7p2qj6Yksq00mf4IWEKF"} />
   </Provider>,
   document.getElementById("root")
 );
