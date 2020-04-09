@@ -60,7 +60,7 @@ export default function Quantity() {
   };
 
   return (
-    <Grid item xs className={classes.grid}>
+    <Grid item xs style={{ padding: 0 }}>
       {checked.length > 0 ? (
         <List className={classes.list}>
           <Divider variant="fullWidth" component="li" />

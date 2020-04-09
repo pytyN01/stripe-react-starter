@@ -68,7 +68,7 @@ export default function Donate() {
   };
 
   return (
-    <Grid item xs className={classes.grid}>
+    <Grid item xs style={{ padding: 0 }}>
       <List
         subheader={
           <ListSubheader>Donation Items, Quantity, & Total</ListSubheader>

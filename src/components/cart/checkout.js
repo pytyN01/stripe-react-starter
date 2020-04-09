@@ -35,7 +35,7 @@ export default function Checkout({ checkout }) {
   const checked = useSelector((state) => state.checked);
 
   return (
-    <Grid item xs className={classes.grid}>
+    <Grid item xs style={{ padding: 0 }}>
       {checked.length > 0 ? (
         <List className={classes.list}>
           <Divider variant="fullWidth" component="li" />
@@ -45,22 +45,6 @@ export default function Checkout({ checkout }) {
           <ListItem dense alignItems="flex-start">
             <ListItemText
               primary={`Donation Total: ${formatPrice(totalPrice(items))}`}
-              secondary={
-                <React.Fragment>
-                  <br />
-                  <Typography
-                    component="span"
-                    variant="body2"
-                    className={classes.inline}
-                    color="textPrimary"
-                  >
-                    Thank You!
-                  </Typography>
-                  {
-                    " — If it weren't for people like you Musaeum would not be what it is today. Knowledge is for everyone this digital library will forever be free thanks to you!"
-                  }
-                </React.Fragment>
-              }
             />
           </ListItem>
           <ListItem dense alignItems="flex-start">
@@ -74,6 +58,26 @@ export default function Checkout({ checkout }) {
             >
               Checkout
             </Button>
+          </ListItem>
+          <ListItem dense alignItems="flex-start">
+            <ListItemText
+              secondary={
+                <React.Fragment>
+                  {
+                    "People like you make Musaeum what it is today. Knowledge is for everyone & thanks to you this site is free for everyone! "
+                  }
+                  <Typography
+                    component="span"
+                    variant="body2"
+                    className={classes.inline}
+                    color="textPrimary"
+                  >
+                    {" "}
+                    Thank You! — Musaeum Team
+                  </Typography>
+                </React.Fragment>
+              }
+            />
           </ListItem>
         </List>
       ) : null}
