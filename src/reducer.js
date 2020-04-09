@@ -4,7 +4,7 @@ const initState = {
       name: "dollar",
       sku: "sku_H24URFOLUPbKau",
       price: 100,
-      quantity: 1,
+      quantity: 0,
       title: "A Precious Dollar",
       text: "Every dollar keeps Musaeum free!",
     },
@@ -12,7 +12,7 @@ const initState = {
       name: "coffee",
       sku: "sku_H24Tk3tOEQRqGe",
       price: 500,
-      quantity: 1,
+      quantity: 0,
       title: "Glorious Cup of Coffee",
       text: "Fact: Coffee = Fuel.",
     },
@@ -20,7 +20,7 @@ const initState = {
       name: "meal",
       sku: "sku_H24ZxnShJD0Aoi",
       price: 1000,
-      quantity: 1,
+      quantity: 0,
       title: "A Cheap Meal",
       text: "Better Fact: Food = Love!",
     },
@@ -28,12 +28,11 @@ const initState = {
       name: "domain",
       sku: "sku_H246vepBK0pLsm",
       price: 2000,
-      quantity: 1,
+      quantity: 0,
       title: "Keep Musaeum Free Forever",
       text: "Extend Musaeum's domain and storage.",
     },
   ],
-  // token: process.env.REACT_APP_TOKEN,
   token: "pk_test_GvOaE0WLNjwMhq7p2qj6Yksq00mf4IWEKF",
   stripe: "",
   checked: [],
@@ -58,28 +57,60 @@ function root(state = initState, action) {
     case "setDollar": {
       const newState = {
         ...state,
-        dollar: state.dollar + action.payload,
+        items: state.items.map((item) => {
+          if (item.name !== "dollar") {
+            return item;
+          }
+          return {
+            ...item,
+            quantity: state.items[0].quantity + action.payload,
+          };
+        }),
       };
       return newState;
     }
     case "setCoffee": {
       const newState = {
         ...state,
-        coffee: state.coffee + action.payload,
+        items: state.items.map((item) => {
+          if (item.name !== "coffee") {
+            return item;
+          }
+          return {
+            ...item,
+            quantity: state.items[1].quantity + action.payload,
+          };
+        }),
       };
       return newState;
     }
     case "setMeal": {
       const newState = {
         ...state,
-        meal: state.meal + action.payload,
+        items: state.items.map((item) => {
+          if (item.name !== "meal") {
+            return item;
+          }
+          return {
+            ...item,
+            quantity: state.items[2].quantity + action.payload,
+          };
+        }),
       };
       return newState;
     }
     case "setDomain": {
       const newState = {
         ...state,
-        domain: state.domain + action.payload,
+        items: state.items.map((item) => {
+          if (item.name !== "domain") {
+            return item;
+          }
+          return {
+            ...item,
+            quantity: state.items[3].quantity + action.payload,
+          };
+        }),
       };
       return newState;
     }

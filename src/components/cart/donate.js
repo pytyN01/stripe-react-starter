@@ -19,8 +19,13 @@ const useStyles = makeStyles((theme) => ({
   list: {
     width: "45ch",
     backgroundColor: theme.palette.background.paper,
+    padding: 0,
   },
 }));
+
+function formatPrice(price) {
+  return `$${(price * 0.01).toFixed(2)}`;
+}
 
 export default function Donate() {
   const classes = useStyles();
@@ -63,7 +68,7 @@ export default function Donate() {
   };
 
   return (
-    <Grid item xs>
+    <Grid item xs className={classes.grid}>
       <List
         subheader={
           <ListSubheader>Donation Items, Quantity, & Total</ListSubheader>
@@ -85,12 +90,16 @@ export default function Donate() {
                 <ImportantDevicesIcon />
               ) : null}
             </ListItemIcon>
-            <ListItemText id={donation.name} primary={donation.title} />
+            <ListItemText
+              id={donation.name}
+              primary={donation.title}
+              secondary={formatPrice(donation.price)}
+            />
             <ListItemSecondaryAction>
               <Switch
                 edge="end"
                 onChange={handleToggle(donation.name)}
-                checked={checked.includes(donation.name)}
+                checked={donation.quantity > 0}
                 inputProps={{ "aria-labelledby": donation.name }}
               />
             </ListItemSecondaryAction>

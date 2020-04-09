@@ -19,10 +19,8 @@ const useStyles = makeStyles((theme) => ({
 export default function Chips() {
   const classes = useStyles();
   const checked = useSelector((state) => state.checked);
-  const dollar = useSelector((state) => state.dollar);
-  const coffee = useSelector((state) => state.coffee);
-  const meal = useSelector((state) => state.meal);
-  const domain = useSelector((state) => state.domain);
+  const items = useSelector((state) => state.items);
+
   const dispatch = useDispatch();
 
   const handleDelete = (value) => () => {
@@ -38,10 +36,21 @@ export default function Chips() {
   };
 
   const handleUnchecked = (value) => {
-    if (value === "dollar") dispatch({ type: "setDollar", payload: -dollar });
-    if (value === "coffee") dispatch({ type: "setCoffee", payload: -coffee });
-    if (value === "meal") dispatch({ type: "setMeal", payload: -meal });
-    if (value === "domain") dispatch({ type: "setDomain", payload: -domain });
+    const capValue = value.charAt(0).toUpperCase() + value.slice(1);
+
+    dispatch({
+      type: `set${capValue}`,
+      payload:
+        value === "dollar"
+          ? -items[0].quantity
+          : value === "coffee"
+          ? -items[1].quantity
+          : value === "meal"
+          ? -items[2].quantity
+          : value === "domain"
+          ? -items[3].quantity
+          : null,
+    });
   };
 
   return (

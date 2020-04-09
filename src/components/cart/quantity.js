@@ -15,6 +15,7 @@ const useStyles = makeStyles((theme) => ({
   list: {
     width: "45ch",
     backgroundColor: theme.palette.background.paper,
+    padding: 0,
   },
 }));
 
@@ -23,6 +24,10 @@ export default function Quantity() {
   const checked = useSelector((state) => state.checked);
   const items = useSelector((state) => state.items);
   const dispatch = useDispatch();
+
+  const toUpper = (value) => {
+    return value.charAt(0).toUpperCase() + value.slice(1);
+  };
 
   const handleAdd = (value) => {
     const capValue = value.charAt(0).toUpperCase() + value.slice(1);
@@ -33,7 +38,7 @@ export default function Quantity() {
   const handleSub = (value) => {
     const capValue = value.charAt(0).toUpperCase() + value.slice(1);
 
-    dispatch({ type: `set${capValue}`, payload: -1 });
+    dispatch({ type: `set${capValue}`, payload: 0 });
 
     if (value === "dollar" && items[0].quantity === 1) handleZero(value);
     if (value === "coffee" && items[1].quantity === 1) handleZero(value);
@@ -45,7 +50,7 @@ export default function Quantity() {
     const currentIndex = checked.indexOf(value);
     const newChecked = [...checked];
 
-    if (currentIndex === -1) {
+    if (currentIndex === 0) {
       newChecked.push(value);
     } else {
       newChecked.splice(currentIndex, 1);
@@ -55,15 +60,17 @@ export default function Quantity() {
   };
 
   return (
-    <Grid item xs>
+    <Grid item xs className={classes.grid}>
       {checked.length > 0 ? (
         <List className={classes.list}>
           <Divider variant="fullWidth" component="li" />
           {items.map((donation, index) =>
-            donation.quantity > -1 ? (
+            donation.quantity > 0 ? (
               <ListItem dense key={index}>
                 <ListItemText
-                  primary={donation.quantity}
+                  primary={`${toUpper(donation.name)}(s) Donated: ${
+                    donation.quantity
+                  }`}
                   secondary={donation.text}
                 />
                 <ListItemSecondaryAction>

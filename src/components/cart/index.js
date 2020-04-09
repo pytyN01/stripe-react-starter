@@ -26,13 +26,17 @@ export default function Index({ token }) {
   }, [token]);
 
   function checkout() {
+    const cartItems = items.filter((item) => {
+      return item.quantity > 0;
+    });
+
     stripe.redirectToCheckout({
-      items: items.map((item) => ({
+      items: cartItems.map((item) => ({
         quantity: item.quantity,
         sku: item.sku,
       })),
-      successUrl: "http://localhost:3000/success",
-      cancelUrl: "http://localhost:3000/canceled",
+      successUrl: "https://stripe-starter.now.sh/success",
+      cancelUrl: "https://stripe-starter.now.sh/canceled",
     });
   }
 
