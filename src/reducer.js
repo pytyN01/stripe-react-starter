@@ -13,7 +13,7 @@ const initState = {
       sku: "sku_H24Tk3tOEQRqGe",
       price: 500,
       quantity: 0,
-      title: "Glorious Cup of Coffee",
+      title: "A Glorious Cup o' Coffee",
       text: "Fact: Coffee = Fuel.",
     },
     {
