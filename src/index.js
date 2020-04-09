@@ -1,9 +1,15 @@
-import React from "react";
-import ReactDOM from "react-dom";
 import Cart from "./components/cart";
+import { Provider } from "react-redux";
+import { createStore } from "redux";
+import ReactDOM from "react-dom";
+import root from "./reducer";
+import React from "react";
+
+const store = createStore(root);
 
 ReactDOM.render(
-  <Cart stripeToken={process.env.REACT_APP_TOKEN} />,
-  // <Cart stripeToken="pk_test_GvOaE0WLNjwMhq7p2qj6Yksq00mf4IWEKF" />,
+  <Provider store={store}>
+    <Cart stripeToken={process.env.REACT_APP_TOKEN} />
+  </Provider>,
   document.getElementById("root")
 );
