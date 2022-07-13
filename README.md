@@ -1,19 +1,16 @@
-# Stripe.js Payment Demo App
+# Stripe.js Payment Next.js App
 
 ## [View Live Demo on Vercel](https://chep-processer.vercel.app/)
 
 ## Built with:
 
-## Built with:
-
----@mantine/core\
----@mantine/dropzone\
----@mantine/hooks\
----@mantine/next\
 ---next\
----next-pwa\
 ---react\
+---next-pwa\
 ---react-dom\
----react-h5-audio-player\
+---animate.css\
+---@mantine/next\
+---@mantine/core\
+---@mantine/hooks\
+---@mantine/dropzone\
 ---tabler-icons-react\
----animate.css
