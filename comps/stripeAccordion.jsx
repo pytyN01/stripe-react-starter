@@ -11,6 +11,7 @@ export default function StripeAccordion() {
         label="select a donation option below"
         icon={<CurrencyDollar />}
       >
+        {/* Changes */}
         <StripeButton amount="5" />
         <StripeButton amount="10" />
         <StripeButton amount="20" />
