@@ -1,5 +1,6 @@
 import Head from "next/head";
-import "../styles/globals.css";
+import "../globals.css";
+import "animate.css";
 
 export default function MyApp({ Component, pageProps }) {
   return (

@@ -1,0 +1,41 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  font-size: 1vw;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.StripeButton {
+  margin-top: 3vh;
+  background-color: black;
+}
+
+.StripeTitle {
+  padding-top: 1vh;
+  font-size: 7vw;
+}
+
+@media screen and (min-width: 600px) {
+  .StripeTitle {
+    font-size: 5vw;
+  }
+}
+
+.AccordionItem {
+  text-align: center;
+}
+
+.mantine-Accordion-content,
+.mantine-Accordion-contentInner {
+  padding: 0px;
+}

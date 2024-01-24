@@ -1,6 +1,6 @@
 # Stripe.js Payment Next.js App
 
-## [View Live Demo on Vercel](https://chep-processer.vercel.app/)
+## [View Live Demo on Vercel](https://ourbooks-donation.vercel.app/)
 
 ## Built with:
 
